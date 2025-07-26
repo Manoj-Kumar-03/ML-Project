@@ -1,6 +1,7 @@
 import os
 import sys
 from src.exception import CustomException
+from sklearn.model_selection import GridSearchCV
 
 import pandas as pd
 import numpy as np
@@ -25,7 +26,12 @@ def evaluate_models(X_train,y_train,X_test,y_test,models):
         
         for i in range(len(list(models))):
             model = list(models.values())[i]
+            # params = param[list(models.keys())[i]]
             
+            # gs = GridSearchCV(model,params,cv=3)
+            # gs.fit(X_train,y_train)
+            
+            # model.set_params(**gs.best_params_)
             model.fit(X_train,y_train)
             
             y_train_pred = model.predict(X_train)
